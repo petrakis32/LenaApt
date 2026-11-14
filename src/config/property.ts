@@ -32,11 +32,20 @@ const bedCapacity: Record<BedType, number> = {
 
 /**
  * The living room also has a sofa-bed that converts on request for
- * 1-2 extra guests — it's deliberately NOT counted in bedCount/
- * maxGuests below, since it's optional/occasional rather than a
- * standing bed. It's described in the living room's copy instead
- * (messages: apartment.sofaBedNote).
+ * 1-2 extra guests — it's deliberately NOT counted in bedCount
+ * below, since it's optional/occasional rather than a standing bed.
+ * It's described in the living room's copy instead (messages:
+ * apartment.sofaBedNote).
  */
+const standingBedCapacity = bedrooms.reduce(
+  (sum, room) =>
+    sum + room.beds.reduce((s, b) => s + b.count * bedCapacity[b.type], 0),
+  0
+);
+
+/** Extra guests the sofa-bed can take when converted, per the owner. */
+const sofaBedMaxGuests = 2;
+
 export const propertyFacts = {
   bedroomCount: bedrooms.length,
   bedCount: bedrooms.reduce(
@@ -45,10 +54,9 @@ export const propertyFacts = {
   ),
   bathroomCount: 1,
   balconyCount: balconies.length,
-  /** Derived from bed types (double=2, single=1) — not a marketing estimate. */
-  maxGuests: bedrooms.reduce(
-    (sum, room) =>
-      sum + room.beds.reduce((s, b) => s + b.count * bedCapacity[b.type], 0),
-    0
-  ),
+  /**
+   * Max occupancy including the sofa-bed (confirmed by the owner),
+   * not just the standing beds (standingBedCapacity alone is 4).
+   */
+  maxGuests: standingBedCapacity + sofaBedMaxGuests,
 };

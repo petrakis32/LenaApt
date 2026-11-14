@@ -19,7 +19,12 @@ export async function FactStrip({
     { icon: Bed, label: t("factsLabels.beds"), value: propertyFacts.bedCount },
     { icon: Bath, label: t("factsLabels.bathrooms"), value: propertyFacts.bathroomCount },
     { icon: Sun, label: t("factsLabels.balconies"), value: propertyFacts.balconyCount },
-    { icon: Users, label: t("factsLabels.maxGuests"), value: propertyFacts.maxGuests },
+    {
+      icon: Users,
+      label: t("factsLabels.maxGuests"),
+      value: propertyFacts.maxGuests,
+      valueAfterLabel: true,
+    },
   ];
 
   return (
@@ -30,36 +35,46 @@ export async function FactStrip({
         className
       )}
     >
-      {facts.map(({ icon: Icon, label, value }) => (
-        <div key={label} className="flex items-center gap-3">
-          <Icon
-            aria-hidden
+      {facts.map(({ icon: Icon, label, value, valueAfterLabel }) => {
+        const valueEl = (
+          <dd
+            key="value"
             className={cn(
-              "h-[18px] w-[18px] shrink-0",
-              tone === "inverted" ? "text-gold" : "text-terracotta"
+              "font-display text-2xl leading-none tabular-nums",
+              tone === "inverted" ? "text-white" : "text-ink"
             )}
-            strokeWidth={1.75}
-          />
-          <div className="flex items-baseline gap-1.5">
-            <dd
+          >
+            {value}
+          </dd>
+        );
+        const labelEl = (
+          <dt
+            key="label"
+            className={cn(
+              "text-sm leading-none",
+              tone === "inverted" ? "text-cream/70" : "text-ink-soft"
+            )}
+          >
+            {label}
+          </dt>
+        );
+
+        return (
+          <div key={label} className="flex items-center gap-3">
+            <Icon
+              aria-hidden
               className={cn(
-                "font-display text-2xl leading-none tabular-nums",
-                tone === "inverted" ? "text-white" : "text-ink"
+                "h-[18px] w-[18px] shrink-0",
+                tone === "inverted" ? "text-gold" : "text-terracotta"
               )}
-            >
-              {value}
-            </dd>
-            <dt
-              className={cn(
-                "text-sm leading-none",
-                tone === "inverted" ? "text-cream/70" : "text-ink-soft"
-              )}
-            >
-              {label}
-            </dt>
+              strokeWidth={1.75}
+            />
+            <div className="flex items-baseline gap-1.5">
+              {valueAfterLabel ? [labelEl, valueEl] : [valueEl, labelEl]}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </dl>
   );
 }
