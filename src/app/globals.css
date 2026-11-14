@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/*
+ * Lena Apt design tokens — Mediterranean / Crete boutique palette.
+ * Warm limewash neutrals, Aegean blue and clay-terracotta accents.
+ * Single consistent light theme (no auto dark mode) — matches the
+ * warm, sun-washed brand rather than a generic dark UI.
+ */
+:root {
+  --color-cream: #fbf6ec;
+  --color-cream-deep: #f3e9d7;
+  --color-cream-line: #e7d9bd;
+
+  --color-ink: #2a2420;
+  --color-ink-soft: #5b5245;
+  --color-ink-faint: #857b6d;
+
+  --color-terracotta: #c1622e;
+  --color-terracotta-dark: #9e4f24;
+  --color-terracotta-light: #e8ddd0;
+
+  --color-aegean: #1f5c6b;
+  --color-aegean-dark: #143f49;
+  --color-aegean-light: #dde9e8;
+
+  --color-olive: #6f7a4d;
+  --color-olive-dark: #545c3a;
+
+  --color-gold: #c9a15a;
+
+  --color-white: #ffffff;
+
+  --shadow-soft: 0 1px 2px rgba(42, 36, 32, 0.04), 0 8px 24px -8px rgba(42, 36, 32, 0.12);
+  --shadow-lifted: 0 12px 32px -12px rgba(42, 36, 32, 0.28);
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
+  --color-cream-line: var(--color-cream-line);
+
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+
+  --color-terracotta: var(--color-terracotta);
+  --color-terracotta-dark: var(--color-terracotta-dark);
+  --color-terracotta-light: var(--color-terracotta-light);
+
+  --color-aegean: var(--color-aegean);
+  --color-aegean-dark: var(--color-aegean-dark);
+  --color-aegean-light: var(--color-aegean-light);
+
+  --color-olive: var(--color-olive);
+  --color-olive-dark: var(--color-olive-dark);
+
+  --color-gold: var(--color-gold);
+  --color-white: var(--color-white);
+
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lifted: var(--shadow-lifted);
+
+  --container-8xl: 90rem;
+
+  --animate-fade-in: fade-in 0.6s var(--ease-out-soft) both;
+  --animate-fade-in-up: fade-in-up 0.7s var(--ease-out-soft) both;
+  --animate-scroll-hint: scroll-hint 2.2s var(--ease-out-soft) infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scroll-hint {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateY(5px);
+      opacity: 1;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-terracotta);
+  color: var(--color-white);
+}
+
+html {
+  scrollbar-color: var(--color-ink-faint) var(--color-cream-deep);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-faint);
+  border-radius: 9999px;
+  border: 3px solid var(--color-cream-deep);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-soft);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.balance {
+  text-wrap: balance;
+}

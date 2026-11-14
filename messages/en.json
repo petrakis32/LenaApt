@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "titleTemplate": "%s | Lena Apt — Rethymno, Crete",
+    "defaultTitle": "Lena Apt — Holiday Apartment in Rethymno, Crete",
+    "defaultDescription": "Lena Apt is a comfortable, well-equipped two-bedroom holiday apartment in Rethymno, Crete. Explore the apartment, browse photos and request your booking directly with the owners.",
+    "home": {
+      "title": "Holiday Apartment in Rethymno, Crete",
+      "description": "A bright, comfortable two-bedroom apartment in Rethymno, Crete. See photos, amenities, the location and request a booking directly with the owners."
+    },
+    "apartment": {
+      "title": "The Apartment",
+      "description": "Two bedrooms, three beds, one bathroom and two balconies — a detailed look at every room in Lena Apt, Rethymno."
+    },
+    "gallery": {
+      "title": "Photo Gallery",
+      "description": "Browse photos of Lena Apt in Rethymno, Crete — bedrooms, kitchen, living areas and balconies."
+    },
+    "location": {
+      "title": "Location",
+      "description": "Lena Apt is located in Rethymno, Crete. Find the apartment on the map and discover what's nearby."
+    },
+    "booking": {
+      "title": "Book Now",
+      "description": "Request a booking at Lena Apt, Rethymno. Contact the owners directly by phone, email, WhatsApp or the booking request form."
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "apartment": "The Apartment",
+    "gallery": "Gallery",
+    "location": "Location",
+    "booking": "Book Now",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "languageSwitcher": "Change language",
+    "skipToContent": "Skip to content"
+  },
+  "hero": {
+    "eyebrow": "Rethymno, Crete",
+    "title": "Lena Apt",
+    "subtitle": "A bright, comfortable two-bedroom apartment in the heart of Crete — your calm home base for a memorable stay in Rethymno.",
+    "primaryCta": "Request a Booking",
+    "secondaryCta": "Explore the Apartment",
+    "scrollHint": "Discover more"
+  },
+  "home": {
+    "introEyebrow": "Welcome",
+    "introTitle": "A warm, well-equipped home in Rethymno",
+    "introBody": "Lena Apt offers two comfortable bedrooms, a fully equipped kitchen and two balconies to relax on — thoughtfully arranged so you feel at home from the moment you arrive. Whether you're exploring Rethymno's old town, the surrounding beaches or the rest of Crete, Lena Apt is a calm, comfortable base to return to.",
+    "quickFactsTitle": "At a glance",
+    "overviewEyebrow": "The Apartment",
+    "overviewTitle": "Space to relax, indoors and out",
+    "overviewBody": "Two bedrooms sleep up to four guests comfortably, with a fully equipped kitchen, a bathroom and two private balconies — one large enough to dine on, one perfect for a quiet morning coffee.",
+    "overviewCta": "See all apartment details",
+    "amenitiesEyebrow": "Comfort",
+    "amenitiesTitle": "Everything you need, ready when you arrive",
+    "amenitiesCta": "View all amenities",
+    "galleryEyebrow": "Gallery",
+    "galleryTitle": "A closer look at Lena Apt",
+    "galleryCta": "View full gallery",
+    "locationEyebrow": "Location",
+    "locationTitle": "Rethymno, Crete",
+    "locationBody": "Lena Apt is located in Rethymno, on the north coast of Crete — a city known for its Venetian old town, long sandy beach and relaxed island pace. Full directions and nearby highlights are on the location page.",
+    "locationCta": "Discover the location",
+    "ctaEyebrow": "Ready to visit?",
+    "ctaTitle": "Request your stay at Lena Apt",
+    "ctaBody": "Send a booking request with your dates and we'll get back to you directly — no booking fees, no middleman.",
+    "ctaButton": "Request a Booking"
+  },
+  "apartment": {
+    "eyebrow": "The Apartment",
+    "title": "A closer look at Lena Apt",
+    "intro": "Lena Apt is arranged over comfortable, well-defined spaces — two bedrooms, a fully equipped kitchen, a bathroom and two balconies — designed for an easy, relaxed stay in Rethymno.",
+    "jumpOverview": "Overview",
+    "aboutTitle": "About Lena Apt",
+    "about1Heading": "The neighborhood",
+    "about2Heading": "Inside the apartment",
+    "about3Heading": "Why we built it this way",
+    "about1": "Welcome to Lena Apt, a bright, modern 61 m² apartment just 80 meters from the sea. Step outside, and in a few minutes you're already on the sand! All around and close by you'll find supermarkets, shops, cafés, bars, and restaurants, open at any hour. The lively seafront promenade and the city's central market are just 700 meters away — perfect for an evening stroll (or a morning one or a midnight one — no judgment here). History lovers will enjoy having the Rethymnon Archaeological Museum just 1.8 km away, while the Venetian Harbor, with its cobbled streets and seaside tavernas, is barely a 20-minute walk.",
+    "about2": "Step inside, and you'll find a bright living room with a TV and a spacious dining area for your meals. The kitchen comes fully equipped with everything you might need. Out on the large balcony, you can enjoy your morning coffee or an evening glass of wine. There are two comfortable bedrooms to rest in, with four beds in total — a queen in the main bedroom, two singles, and a sofa bed in the living room. Both bedrooms have wardrobes for storage and air conditioning for the hot summer days. The second bedroom even has its own small, quiet balcony we're sure you'll love as much as we do. The bathroom, though compact, is comfortable, with a shower, washing machine, and hairdryer. In short, we've made sure you won't be missing a thing.",
+    "about3": "We built Lena Apt with a lot of thought and care, because we believe a vacation deserves a place that truly feels like home — not just a room to sleep in. We happily recommend it to families traveling with children, couples looking for some quiet by the sea, and groups of friends ready to enjoy a proper Cretan summer. Whoever you are, we wanted you to have a space made for you.",
+    "about4": "When our guests write to us, they usually mention: how close they were to the beach, and how convenient the location was for their whole trip — even Chania Airport, about 69 km away, was never a problem. They also talk about how comfortable the apartment felt and how welcome we made them feel, because that's how we try to treat every guest — like family. An apartment made for everyone, with the same warmth for each of you.",
+    "factsLabels": {
+      "bedrooms": "Bedrooms",
+      "beds": "Beds",
+      "bathrooms": "Bathroom",
+      "balconies": "Balconies",
+      "maxGuests": "Sleeps up to"
+    },
+    "bedsSummary": {
+      "double": "{count, plural, one {# double bed} other {# double beds}}",
+      "single": "{count, plural, one {# single bed} other {# single beds}}"
+    },
+    "roomsTitle": "Rooms",
+    "rooms": {
+      "bedroom-1": {
+        "title": "Bedroom 1",
+        "description": "A comfortable bedroom with a double bed, ideal for a couple."
+      },
+      "bedroom-2": {
+        "title": "Bedroom 2",
+        "description": "A second bedroom with two single beds, well suited to children, friends or family travelling together."
+      },
+      "bathroom": {
+        "title": "Bathroom",
+        "description": "A well-appointed bathroom serving both bedrooms."
+      },
+      "living": {
+        "title": "Living Room & Kitchen",
+        "description": "An open-plan living room and fully equipped kitchen, ready for home-cooked meals and relaxed evenings between days out exploring Crete."
+      },
+      "balcony-large": {
+        "title": "Large Balcony",
+        "description": "A spacious balcony, ideal for outdoor dining or unwinding in the evening."
+      },
+      "balcony-small": {
+        "title": "Small Balcony",
+        "description": "A cosy balcony, perfect for a quiet morning coffee."
+      }
+    },
+    "sofaBedNote": "Sofa-bed available on request, fits 1–2 extra guests",
+    "galleryTeaserTitle": "See the apartment in photos",
+    "galleryTeaserCta": "View full gallery",
+    "ctaTitle": "Ready to stay at Lena Apt?",
+    "ctaButton": "Request a Booking"
+  },
+  "amenities": {
+    "title": "Amenities",
+    "intro": "Lena Apt is equipped with everything you need for a comfortable, easy stay in Rethymno.",
+    "categories": {
+      "essentials": "Essentials",
+      "kitchen": "Kitchen",
+      "comfort": "Comfort"
+    },
+    "items": {
+      "wifi": {
+        "title": "Wi-Fi",
+        "description": "Complimentary wireless internet throughout the apartment."
+      },
+      "parking": {
+        "title": "Parking Space",
+        "description": "One private parking space available for your stay."
+      },
+      "kitchen": {
+        "title": "Fully Equipped Kitchen",
+        "description": "Everything you need to cook and eat comfortably during your stay."
+      },
+      "ac": {
+        "title": "Air Conditioning",
+        "description": "Stay cool and comfortable, even during the warmest Cretan afternoons."
+      },
+      "washer": {
+        "title": "Washing Machine",
+        "description": "In-apartment laundry, ideal for longer stays."
+      },
+      "tv": {
+        "title": "Television",
+        "description": "Relax with TV after a day of exploring Rethymno."
+      }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "Lena Apt in Photos",
+    "intro": "A closer look at the bedrooms, kitchen, living area and balconies at Lena Apt.",
+    "viewAll": "View full gallery",
+    "filterAll": "All photos",
+    "lightbox": {
+      "close": "Close",
+      "next": "Next photo",
+      "previous": "Previous photo",
+      "counter": "{current} of {total}"
+    },
+    "categories": {
+      "living": "Living Room & Kitchen",
+      "bedroom-1": "Bedroom 1",
+      "bedroom-2": "Bedroom 2",
+      "bathroom": "Bathroom",
+      "balcony-large": "Large Balcony",
+      "balcony-small": "Small Balcony",
+      "exterior": "Entrance",
+      "view": "Around Rethymno"
+    },
+    "photoComingSoon": "Photo coming soon"
+  },
+  "location": {
+    "eyebrow": "Location",
+    "title": "Rethymno, Crete",
+    "intro": "Lena Apt is located in Rethymno, a historic coastal city on the north shore of Crete, known for its Venetian old town, long sandy beach and relaxed pace of life.",
+    "mapTitle": "Map",
+    "getDirections": "Get directions on Google Maps",
+    "nearbyTitle": "What's nearby",
+    "nearbyIntro": "A few of our favorite spots close to Lena Apt — we'll add more soon.",
+    "categories": {
+      "beaches": "Beaches",
+      "restaurants": "Restaurants",
+      "cafes": "Cafés",
+      "supermarkets": "Supermarkets",
+      "attractions": "Attractions"
+    },
+    "emptyCategory": "Details for this category are coming soon.",
+    "ctaTitle": "Ready to explore Rethymno from Lena Apt?",
+    "ctaButton": "Request a Booking"
+  },
+  "booking": {
+    "eyebrow": "Book Now",
+    "title": "Request Your Stay",
+    "intro": "Lena Apt is booked directly with the owners — no booking platform fees, no middleman. Send a request below or reach out directly and we'll confirm availability as soon as possible.",
+    "requestNotice": "This is a booking request, not an instant confirmation. The owners will personally confirm availability and get back to you by email or phone.",
+    "contactTitle": "Contact the owners directly",
+    "contactIntro": "Prefer to talk first? Reach us directly using any of the options below.",
+    "phone": {
+      "label": "Phone",
+      "cta": "Call now",
+      "pending": "Phone number coming soon"
+    },
+    "email": {
+      "label": "Email",
+      "cta": "Send an email",
+      "pending": "Email address coming soon"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "cta": "Message on WhatsApp",
+      "pending": "WhatsApp number coming soon"
+    },
+    "channelsTitle": "Also listed on",
+    "channelsNote": "Availability calendars for Airbnb and Booking.com will be connected here soon.",
+    "formTitle": "Booking Request Form",
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Your full name",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone number",
+      "phonePlaceholder": "+30 000 000 0000",
+      "checkIn": "Check-in date",
+      "checkOut": "Check-out date",
+      "guests": "Number of guests",
+      "message": "Message",
+      "messagePlaceholder": "Anything else you'd like us to know? (optional)",
+      "submit": "Send Booking Request",
+      "submitting": "Sending your request…",
+      "successTitle": "Request sent",
+      "successBody": "Thank you! Your booking request has been sent. We'll get back to you by email as soon as possible.",
+      "errorTitle": "Something went wrong",
+      "errorBody": "We couldn't send your request right now. Please try again, or contact us directly by phone, email or WhatsApp.",
+      "notConfiguredTitle": "Booking requests are temporarily unavailable",
+      "notConfiguredBody": "Online booking requests aren't set up yet — please contact us directly by phone, email or WhatsApp in the meantime.",
+      "sendAnother": "Send another request",
+      "validation": {
+        "required": "This field is required.",
+        "invalidEmail": "Please enter a valid email address.",
+        "invalidPhone": "Please enter a valid phone number.",
+        "invalidDate": "Please enter a valid date.",
+        "checkOutAfterCheckIn": "Check-out date must be after check-in date.",
+        "checkInPast": "Check-in date can't be in the past.",
+        "minGuests": "Please enter at least 1 guest.",
+        "maxGuests": "Please contact us directly for larger groups.",
+        "messageTooLong": "Message is too long ({max} characters max)."
+      }
+    }
+  },
+  "footer": {
+    "aboutTitle": "Lena Apt",
+    "aboutBody": "A comfortable two-bedroom holiday apartment in Rethymno, Crete.",
+    "quickLinksTitle": "Explore",
+    "contactTitle": "Contact",
+    "addressPending": "Address available on request",
+    "languageTitle": "Language",
+    "rights": "© {year} Lena Apt, Rethymno. All rights reserved.",
+    "craftedNote": "A boutique holiday apartment in Rethymno, Crete."
+  },
+  "common": {
+    "requestBooking": "Request a Booking",
+    "exploreApartment": "Explore the Apartment",
+    "viewGallery": "View Gallery",
+    "discoverRethymno": "Discover Rethymno",
+    "checkAvailability": "Check Availability",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn more",
+    "back": "Back",
+    "close": "Close",
+    "loading": "Loading…"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or may have moved.",
+    "cta": "Back to home"
+  }
+}
