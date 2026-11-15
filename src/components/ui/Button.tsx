@@ -26,10 +26,10 @@ export function Button({
   return (
     <Link
       className={cn(
-        "inline-flex min-h-12 items-center justify-center gap-2 rounded-full font-medium",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-medium",
         "transition-[background-color,border-color,box-shadow,transform] duration-200 ease-[var(--ease-out-soft)]",
         "hover:-translate-y-px active:translate-y-0 active:scale-[0.97]",
-        size === "lg" ? "px-7 py-3.5 text-base" : "px-6 py-3 text-[15px]",
+        size === "lg" ? "px-7 py-3.5 text-base" : "px-6 py-3 text-sm",
         variants[variant],
         className
       )}

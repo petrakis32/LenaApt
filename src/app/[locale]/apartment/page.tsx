@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { resolveLocale } from "@/i18n/routing";
 import { PageHero } from "@/components/ui/PageHero";
+import { PinnedAbout } from "@/components/apartment/PinnedAbout";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
-import { FactStrip } from "@/components/property/FactStrip";
 import { RoomShowcase } from "@/components/apartment/RoomShowcase";
 import { FinalCta } from "@/components/home/FinalCta";
 import { PropertyImage } from "@/components/media/PropertyImage";
@@ -42,7 +42,21 @@ export default async function ApartmentPage({
 
   return (
     <>
-      <PageHero title={t("title")} body={t("intro")} />
+      <PageHero
+        title={t("title")}
+        body={t("intro")}
+        // Order = left to right, top to bottom (first row, then second row).
+        collage={[
+          { src: "/images/gallery/bedroom-1/img_20210714_153436.jpg" }, // 1 large (double) bedroom
+          { src: "/images/gallery/hall-kitchen/img_20210714_165422.jpg" }, // 2 kitchen
+          { src: "/images/gallery/balcony-1/slide2.jpg" }, // 3 small balcony
+          { src: "/images/gallery/hall-kitchen/img_20210714_165407.jpg" }, // 4 two chairs
+          { src: "/images/gallery/balcony-2/img_20210714_161505.jpg" }, // 5 large balcony
+          { src: "/images/gallery/bathroom/img_20210714_160356.jpg" }, // 6 bathroom
+          { src: "/images/gallery/bedroom-2/img_20210714_155319.jpg" }, // 7 small (twin) bedroom
+          { src: "/images/gallery/hall-kitchen/img_20210714_165518.jpg" }, // 8 living room, red sofa
+        ]}
+      />
 
       <nav aria-label={t("jumpOverview")} className="border-b border-cream-line bg-cream">
         <Container className="flex gap-6 overflow-x-auto py-4 text-sm font-medium text-ink-soft">
@@ -58,52 +72,48 @@ export default async function ApartmentPage({
         </Container>
       </nav>
 
-      <Section background="cream" className="pt-10 sm:pt-12">
-        <Container>
-          <FactStrip />
-        </Container>
-      </Section>
-
       <Section id="about" background="cream" className="scroll-mt-24">
-        <Container className="grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <div className="flex flex-col gap-8">
-            <h2 className="font-display text-2xl text-ink sm:text-3xl">
-              {t("aboutTitle")}
-            </h2>
+        <Container>
+          <PinnedAbout
+            media={
+              <PropertyImage
+                id={aboutImage.id}
+                src={aboutImage.src}
+                alt={tGallery(`categories.${aboutImage.category}`)}
+                category={aboutImage.category}
+                categoryLabel={tGallery(`categories.${aboutImage.category}`)}
+                comingSoonLabel={tGallery("photoComingSoon")}
+                sizes="(min-width: 1024px) 40vw, 90vw"
+              />
+            }
+          >
+            <div className="flex flex-col gap-8">
+              <h2 className="font-display text-2xl text-ink sm:text-3xl">
+                {t("aboutTitle")}
+              </h2>
 
-            <div className="flex flex-col gap-2">
-              <h3 className="font-display text-lg text-ink">{t("about1Heading")}</h3>
-              <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
-                {welcomeParagraph}
-              </p>
+              <div className="flex flex-col gap-2">
+                <h3 className="font-display text-lg text-ink">{t("about1Heading")}</h3>
+                <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
+                  {welcomeParagraph}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h3 className="font-display text-lg text-ink">{t("about2Heading")}</h3>
+                <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
+                  {interiorParagraph}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h3 className="font-display text-lg text-ink">{t("about3Heading")}</h3>
+                <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
+                  {philosophyParagraph}
+                </p>
+              </div>
             </div>
-
-            <div className="flex flex-col gap-2">
-              <h3 className="font-display text-lg text-ink">{t("about2Heading")}</h3>
-              <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
-                {interiorParagraph}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <h3 className="font-display text-lg text-ink">{t("about3Heading")}</h3>
-              <p className="text-base leading-relaxed text-ink-soft sm:text-lg">
-                {philosophyParagraph}
-              </p>
-            </div>
-          </div>
-
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-lifted lg:aspect-[3/4] lg:sticky lg:top-24">
-            <PropertyImage
-              id={aboutImage.id}
-              src={aboutImage.src}
-              alt={tGallery(`categories.${aboutImage.category}`)}
-              category={aboutImage.category}
-              categoryLabel={tGallery(`categories.${aboutImage.category}`)}
-              comingSoonLabel={tGallery("photoComingSoon")}
-              sizes="(min-width: 1024px) 40vw, 90vw"
-            />
-          </div>
+          </PinnedAbout>
         </Container>
       </Section>
 

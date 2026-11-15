@@ -65,7 +65,7 @@
   --shadow-soft: var(--shadow-soft);
   --shadow-lifted: var(--shadow-lifted);
 
-  --container-8xl: 90rem;
+  --container-8xl: 100rem;
 
   --animate-fade-in: fade-in 0.6s var(--ease-out-soft) both;
   --animate-fade-in-up: fade-in-up 0.7s var(--ease-out-soft) both;
@@ -104,6 +104,18 @@
 
 html {
   scroll-behavior: smooth;
+  /*
+   * Tailwind sizes (text, spacing, controls) are all rem-based, so the
+   * root size is the single dial for how "big" the whole site feels.
+   * 15px on phones, 14px on desktop (browser default is 16px).
+   */
+  font-size: 15px;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 body {

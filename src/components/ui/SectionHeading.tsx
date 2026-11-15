@@ -25,7 +25,7 @@ export function SectionHeading({
     >
       <h2
         className={cn(
-          "balance font-display text-[2.75rem] leading-[1.08] tracking-[-0.01em] sm:text-5xl",
+          "balance font-display text-4xl leading-[1.1] tracking-[-0.01em] sm:text-[2.6rem]",
           tone === "inverted" ? "text-white" : "text-ink"
         )}
       >

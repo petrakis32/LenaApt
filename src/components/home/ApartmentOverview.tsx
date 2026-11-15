@@ -26,7 +26,7 @@ export async function ApartmentOverview() {
               | "bathroom";
             return (
               <div key={id} className="group">
-                <div className="relative aspect-square overflow-hidden rounded-2xl shadow-soft">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-soft">
                   <PropertyImage
                     id={image.id}
                     src={image.src}

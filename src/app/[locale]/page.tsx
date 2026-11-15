@@ -5,7 +5,6 @@ import { Hero } from "@/components/home/Hero";
 import { IntroSection } from "@/components/home/IntroSection";
 import { ApartmentOverview } from "@/components/home/ApartmentOverview";
 import { AmenitiesTeaser } from "@/components/home/AmenitiesTeaser";
-import { GalleryTeaser } from "@/components/home/GalleryTeaser";
 import { LocationTeaser } from "@/components/home/LocationTeaser";
 import { FinalCta } from "@/components/home/FinalCta";
 import { LodgingJsonLd } from "@/components/seo/LodgingJsonLd";
@@ -38,7 +37,6 @@ export default async function HomePage({
       <IntroSection />
       <ApartmentOverview />
       <AmenitiesTeaser />
-      <GalleryTeaser />
       <LocationTeaser />
       <FinalCta />
     </>

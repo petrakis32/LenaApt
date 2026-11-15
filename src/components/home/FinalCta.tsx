@@ -16,7 +16,7 @@ export async function FinalCta() {
         }}
       />
       <Container className="relative">
-        <h2 className="balance mx-auto max-w-2xl font-display text-4xl leading-[1.08] tracking-[-0.01em] text-white sm:text-5xl">
+        <h2 className="balance mx-auto max-w-2xl font-display text-3xl leading-[1.1] tracking-[-0.01em] text-white sm:text-4xl">
           {t("ctaTitle")}
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-cream/85 sm:text-lg">

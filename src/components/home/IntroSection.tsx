@@ -14,7 +14,7 @@ export async function IntroSection() {
     <Section>
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h2 className="balance font-display text-[2.75rem] leading-[1.08] tracking-[-0.01em] text-ink sm:text-5xl">
+          <h2 className="balance font-display text-4xl leading-[1.1] tracking-[-0.01em] text-ink sm:text-[2.6rem]">
             {t("introTitle")}
           </h2>
           <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
@@ -24,7 +24,7 @@ export async function IntroSection() {
           <FactStrip className="mt-10 sm:grid-cols-3" />
         </div>
 
-        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-lifted lg:aspect-[3/4]">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-lifted sm:aspect-[4/3] lg:aspect-[5/4]">
           <PropertyImage
             id={image.id}
             src={image.src}

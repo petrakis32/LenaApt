@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, isValidElement, cloneElement } from "react";
+import { useState, useEffect, isValidElement, cloneElement } from "react";
 import type { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +12,7 @@ import {
   type BookingRequestInput,
 } from "@/lib/validation/booking";
 import { cn } from "@/lib/utils";
+import { rangeIsFree, useBookingDates } from "./BookingDatesContext";
 
 type SubmitState = "idle" | "submitting" | "success" | "error" | "not-configured";
 
@@ -29,6 +30,8 @@ export function BookingForm() {
     handleSubmit,
     watch,
     reset,
+    setValue,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<BookingRequestInput>({
     resolver: zodResolver(bookingRequestSchema),
@@ -47,9 +50,30 @@ export function BookingForm() {
   });
 
   const checkIn = watch("checkIn");
+  const checkOut = watch("checkOut");
+  const dates = useBookingDates();
+
+  // Calendar -> form: a click on the calendar fills the date inputs.
+  // Runs only when the calendar bumps `revision`, never because of the form's own edits.
+  useEffect(() => {
+    if (dates.revision === 0) return;
+    setValue("checkIn", dates.checkIn, { shouldValidate: !!dates.checkIn });
+    setValue("checkOut", dates.checkOut, { shouldValidate: !!dates.checkOut });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dates.revision]);
+
+  // Form -> calendar: typing a date in the inputs highlights it in the calendar.
+  useEffect(() => {
+    dates.setDates(checkIn ?? "", checkOut ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [checkIn, checkOut]);
   const tLoose = t as unknown as LooseT;
 
   async function onSubmit(values: BookingRequestInput) {
+    if (!rangeIsFree(values.checkIn, values.checkOut, dates.nights)) {
+      setError("checkIn", { type: "validate", message: "datesUnavailable" });
+      return;
+    }
     setStatus("submitting");
     try {
       const res = await fetch("/api/booking-request", {

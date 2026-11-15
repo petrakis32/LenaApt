@@ -10,7 +10,7 @@ export async function LocationTeaser() {
   const tLocation = await getTranslations("location");
 
   return (
-    <Section background="cream">
+    <Section background="deep">
       <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading

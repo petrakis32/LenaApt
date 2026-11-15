@@ -6,7 +6,7 @@ export function Container({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("mx-auto max-w-8xl px-5 sm:px-8", className)}
+      className={cn("mx-auto w-full max-w-8xl px-5 sm:px-8", className)}
       {...props}
     />
   );

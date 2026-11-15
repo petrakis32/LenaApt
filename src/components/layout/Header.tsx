@@ -24,7 +24,7 @@ export function Header() {
       >
         {t("skipToContent")}
       </a>
-      <div className="mx-auto flex h-[72px] max-w-8xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-8xl items-center justify-between px-5 sm:px-8">
         <Logo />
 
         <nav
@@ -41,7 +41,7 @@ export function Header() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group relative py-1 text-[15px] font-medium transition-colors",
+                  "group relative py-1 text-sm font-medium transition-colors",
                   active
                     ? "text-terracotta"
                     : "text-ink-soft hover:text-ink"
@@ -64,7 +64,7 @@ export function Header() {
           <LanguageSwitcher />
           <Link
             href={bookingHref}
-            className="rounded-full bg-terracotta px-5 py-2.5 text-[15px] font-medium text-white shadow-soft transition-colors hover:bg-terracotta-dark"
+            className="rounded-full bg-terracotta px-5 py-2.5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-terracotta-dark"
           >
             {tCommon("requestBooking")}
           </Link>
