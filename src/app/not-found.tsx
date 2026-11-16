@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { buttonStyles } from "@/components/ui/Button";
 import "./globals.css";
 
 /**
@@ -9,18 +10,13 @@ import "./globals.css";
  */
 export default function GlobalNotFound() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-terracotta">
-        404
-      </p>
-      <h1 className="mt-3 font-display text-3xl text-ink">Page not found</h1>
-      <p className="mt-4 max-w-md text-ink-soft">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-cream px-6 text-center">
+      <p className="t-eyebrow">404</p>
+      <h1 className="t-h1 mt-4 text-ink">Page not found</h1>
+      <p className="t-lead mt-5 max-w-md">
         The page you&apos;re looking for doesn&apos;t exist or may have moved.
       </p>
-      <Link
-        href="/"
-        className="mt-8 inline-flex rounded-full bg-terracotta px-6 py-3 font-medium text-white hover:bg-terracotta-dark"
-      >
+      <Link href="/" className={buttonStyles({ variant: "primary", className: "mt-9" })}>
         Back to home
       </Link>
     </div>

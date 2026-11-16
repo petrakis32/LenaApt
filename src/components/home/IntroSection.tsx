@@ -1,41 +1,40 @@
 import { getTranslations } from "next-intl/server";
-import { galleryImages } from "@/config/gallery";
-import { PropertyImage } from "@/components/media/PropertyImage";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { FactStrip } from "@/components/property/FactStrip";
+import { ArrowRight } from "lucide-react";
+import { homePhotos } from "@/config/gallery";
+import { Photo } from "@/components/media/Photo";
+import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 
+/**
+ * Edge-to-edge split: photo fills the left ~57% of the screen, text sits
+ * on cream to its right (the whole home page is one cream background). Stacks (photo first) on phones.
+ */
 export async function IntroSection() {
   const t = await getTranslations("home");
   const tGallery = await getTranslations("gallery");
-  const image = galleryImages.find((img) => img.id === "living-1")!;
 
   return (
-    <Section>
-      <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <h2 className="balance font-display text-4xl leading-[1.1] tracking-[-0.01em] text-ink sm:text-[2.6rem]">
-            {t("introTitle")}
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
-            {t("introBody")}
-          </p>
+    <section className="grid bg-cream lg:grid-cols-[1.35fr_1fr]">
+      <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:min-h-[30rem]">
+        <Photo
+          src={homePhotos.introLarge}
+          alt={tGallery("categories.balcony-large")}
+          sizes="(min-width: 1024px) 57vw, 100vw"
+          position="50% 15%"
+        />
+      </div>
 
-          <FactStrip className="mt-10 sm:grid-cols-3" />
-        </div>
-
-        <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-lifted sm:aspect-[4/3] lg:aspect-[5/4]">
-          <PropertyImage
-            id={image.id}
-            src={image.src}
-            alt={tGallery(`categories.${image.category}`)}
-            category={image.category}
-            categoryLabel={tGallery(`categories.${image.category}`)}
-            comingSoonLabel={tGallery("photoComingSoon")}
-            sizes="(min-width: 1024px) 40vw, 90vw"
-          />
-        </div>
-      </Container>
-    </Section>
+      <div className="flex items-center justify-center px-5 py-14 text-center sm:px-10 lg:px-14 xl:px-20">
+        <Reveal className="max-w-md">
+          <p className="t-eyebrow">{t("introEyebrow")}</p>
+          <h2 className="t-h2 balance mt-4 text-ink">{t("introTitle")}</h2>
+          <p className="t-lead mt-5">{t("introLead")}</p>
+          <Button href="/apartment" className="mt-8">
+            {t("introCta")}
+            <ArrowRight aria-hidden className="h-4 w-4" />
+          </Button>
+        </Reveal>
+      </div>
+    </section>
   );
 }

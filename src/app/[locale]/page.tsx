@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { resolveLocale } from "@/i18n/routing";
 import { Hero } from "@/components/home/Hero";
+import { FactsBar } from "@/components/home/FactsBar";
 import { IntroSection } from "@/components/home/IntroSection";
 import { ApartmentOverview } from "@/components/home/ApartmentOverview";
-import { AmenitiesTeaser } from "@/components/home/AmenitiesTeaser";
 import { LocationTeaser } from "@/components/home/LocationTeaser";
-import { FinalCta } from "@/components/home/FinalCta";
+import { BookingCta } from "@/components/home/BookingCta";
 import { LodgingJsonLd } from "@/components/seo/LodgingJsonLd";
 
 export async function generateMetadata({
@@ -33,12 +33,15 @@ export default async function HomePage({
   return (
     <>
       <LodgingJsonLd />
-      <Hero />
+      {/* On desktop, hero + facts bar together fill exactly the first screen. */}
+      <div className="flex flex-col lg:min-h-svh">
+        <Hero />
+        <FactsBar />
+      </div>
       <IntroSection />
       <ApartmentOverview />
-      <AmenitiesTeaser />
       <LocationTeaser />
-      <FinalCta />
+      <BookingCta />
     </>
   );
 }

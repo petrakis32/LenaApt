@@ -16,6 +16,7 @@ interface LightboxProps {
 export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) {
   const t = useTranslations("gallery");
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
 
   const total = images.length;
@@ -31,6 +32,21 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") goPrev();
       if (e.key === "ArrowRight") goNext();
+      if (e.key === "Tab") {
+        // Focus trap: keep Tab inside the dialog's three buttons.
+        const buttons = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+        if (!buttons || buttons.length === 0) return;
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        const activeEl = document.activeElement;
+        if (e.shiftKey && activeEl === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && activeEl === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     }
     document.addEventListener("keydown", onKeyDown);
     return () => {
@@ -44,6 +60,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label={t("title")}
@@ -88,7 +105,8 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
           <ChevronLeft aria-hidden className="h-6 w-6" />
         </button>
 
-        <div className="relative aspect-[4/3] w-full max-w-4xl overflow-hidden rounded-xl sm:aspect-[3/2]">
+        {/* object-contain: portrait and panoramic photos show whole, never cropped */}
+        <div className="relative h-[68svh] w-full max-w-5xl overflow-hidden rounded-card">
           <PropertyImage
             id={image.id}
             src={image.src}
@@ -97,6 +115,7 @@ export function Lightbox({ images, index, onClose, onNavigate }: LightboxProps) 
             categoryLabel={t(`categories.${image.category}`)}
             comingSoonLabel={t("photoComingSoon")}
             sizes="(min-width: 1024px) 70vw, 95vw"
+            className="!object-contain"
             priority
           />
         </div>

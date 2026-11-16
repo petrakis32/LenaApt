@@ -6,6 +6,8 @@ import { useTranslations } from "next-intl";
 import { X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { primaryNav, bookingHref } from "@/config/navigation";
+import { Logo } from "@/components/brand/Logo";
+import { buttonStyles } from "@/components/ui/Button";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { cn } from "@/lib/utils";
 
@@ -52,18 +54,15 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       role="dialog"
       aria-modal="true"
       aria-label={t("menu")}
+      aria-hidden={!open}
       className={cn(
         "fixed inset-0 z-[60] bg-cream transition-opacity duration-200 lg:hidden",
-        open
-          ? "pointer-events-auto opacity-100"
-          : "pointer-events-none opacity-0"
+        open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       )}
     >
       <div className="flex h-full flex-col">
-        <div className="flex items-center justify-between px-5 py-4">
-          <span className="font-display text-lg text-ink">
-            Lena <span className="text-terracotta">Apt</span>
-          </span>
+        <div className="flex h-[4.5rem] items-center justify-between px-5">
+          <Logo />
           <button
             ref={closeButtonRef}
             type="button"
@@ -75,7 +74,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           </button>
         </div>
 
-        <nav className="mt-4 flex flex-1 flex-col gap-1 px-5">
+        <nav className="flex flex-1 flex-col justify-center gap-1 px-5">
           {primaryNav.map((item) => {
             const active =
               pathname === item.href ||
@@ -87,8 +86,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 onClick={onClose}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "min-h-12 rounded-lg px-3 py-3 font-display text-2xl transition-colors",
-                  active ? "text-terracotta" : "text-ink hover:text-terracotta"
+                  "t-h2 min-h-12 border-b border-cream-line/70 py-3 transition-colors",
+                  active ? "text-terracotta-dark" : "text-ink hover:text-terracotta-dark"
                 )}
               >
                 {t(item.key)}
@@ -97,15 +96,17 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           })}
         </nav>
 
-        <div className="flex flex-col gap-4 border-t border-cream-line px-5 py-6">
-          <LanguageSwitcher />
+        <div className="flex flex-col gap-4 px-5 pb-8 pt-4">
           <Link
             href={bookingHref}
             onClick={onClose}
-            className="flex min-h-12 items-center justify-center rounded-full bg-terracotta px-6 py-3 text-center font-medium text-white shadow-soft transition-colors hover:bg-terracotta-dark"
+            className={buttonStyles({ variant: "primary", size: "lg", className: "w-full" })}
           >
             {tCommon("requestBooking")}
           </Link>
+          <div className="flex justify-center">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </div>,

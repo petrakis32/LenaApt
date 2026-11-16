@@ -5,6 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { GalleryGrid } from "@/components/gallery/GalleryGrid";
+import { BookingCta } from "@/components/home/BookingCta";
 
 export async function generateMetadata({
   params,
@@ -27,15 +28,17 @@ export default async function GalleryPage({
   const locale = resolveLocale(rawLocale);
   setRequestLocale(locale);
   const t = await getTranslations("gallery");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
-      <PageHero title={t("title")} body={t("intro")} />
-      <Section background="cream" className="pt-10 sm:pt-12">
+      <PageHero eyebrow={tNav("gallery")} title={t("title")} body={t("intro")} />
+      <Section background="cream" className="!pt-0">
         <Container>
           <GalleryGrid />
         </Container>
       </Section>
+      <BookingCta />
     </>
   );
 }

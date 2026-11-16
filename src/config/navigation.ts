@@ -5,15 +5,15 @@
  * add/remove/reorder nav items.
  */
 export interface NavItem {
-  key: "home" | "apartment" | "gallery" | "location";
-  href: "/" | "/apartment" | "/gallery" | "/location";
+  key: "home" | "apartment" | "gallery" | "explore";
+  href: "/" | "/apartment" | "/gallery" | "/explore";
 }
 
 export const primaryNav: NavItem[] = [
   { key: "home", href: "/" },
   { key: "apartment", href: "/apartment" },
   { key: "gallery", href: "/gallery" },
-  { key: "location", href: "/location" },
+  { key: "explore", href: "/explore" },
 ];
 
 export const bookingHref = "/booking" as const;
