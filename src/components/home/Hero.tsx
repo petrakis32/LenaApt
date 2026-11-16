@@ -1,16 +1,20 @@
 import { getTranslations } from "next-intl/server";
-import { ChevronDown } from "lucide-react";
 import { heroImage } from "@/config/gallery";
 import { PropertyImage } from "@/components/media/PropertyImage";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 
+/**
+ * Opening photo. The header floats over its top edge (transparent until
+ * the visitor scrolls). Title block sits upper-left, vertically centered,
+ * so the right side of the photo stays clear.
+ */
 export async function Hero() {
   const t = await getTranslations("hero");
   const tGallery = await getTranslations("gallery");
 
   return (
-    <section className="relative flex min-h-[88svh] flex-col overflow-hidden bg-ink">
+    <section className="relative flex min-h-[34rem] items-center overflow-hidden bg-ink pb-16 pt-28 sm:h-[78svh] sm:max-h-[50rem] sm:pb-12">
       <div className="absolute inset-0">
         <PropertyImage
           id={heroImage.id}
@@ -23,43 +27,33 @@ export async function Hero() {
           minimal
           sizes="100vw"
         />
+        {/* Left-to-right wash keeps the title readable; the right stays clear. */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-ink via-ink/35 to-ink/10"
+          className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/25 to-transparent max-sm:bg-gradient-to-t max-sm:from-ink/75 max-sm:via-ink/30 max-sm:to-ink/20"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink/40 to-transparent"
         />
       </div>
 
-      <Container className="relative flex flex-1 animate-fade-in-up flex-col items-center text-center">
-        {/* Title sits at the top of the hero, below the fixed header. */}
-        <h1 className="balance pt-24 font-display text-5xl leading-[1.04] tracking-[-0.02em] text-white sm:pt-28 sm:text-6xl lg:text-7xl">
-          {t("title")}
-        </h1>
-
-        {/* Tagline + buttons are centred in the remaining space. */}
-        <div className="flex flex-1 flex-col items-center justify-center py-12">
-          <p className="balance max-w-xl text-base leading-relaxed text-cream/90 sm:text-lg">
+      <Container className="relative animate-fade-in-up">
+        <div className="flex max-w-xl flex-col items-start text-left max-sm:pt-24">
+          <h1 className="t-display text-white">{t("title")}</h1>
+          <p className="balance mt-4 max-w-sm text-lg leading-relaxed text-white/90 sm:text-xl">
             {t("subtitle")}
           </p>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row">
-            <Button href="/booking" size="lg">
-              {t("primaryCta")}
-            </Button>
-            <Button href="/apartment" size="lg" variant="outline">
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="/apartment" size="lg">
               {t("secondaryCta")}
+            </Button>
+            <Button href="/booking" size="lg" variant="outline">
+              {t("primaryCta")}
             </Button>
           </div>
         </div>
       </Container>
-
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-5 hidden justify-center sm:flex"
-      >
-        <span className="flex flex-col items-center gap-1 text-xs text-white/70">
-          {t("scrollHint")}
-          <ChevronDown className="h-4 w-4 animate-scroll-hint" />
-        </span>
-      </div>
     </section>
   );
 }

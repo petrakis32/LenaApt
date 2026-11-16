@@ -5,7 +5,10 @@ import type { ReactElement } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
+import { Card } from "@/components/ui/Card";
+import { Notice } from "@/components/ui/Notice";
+import { buttonStyles } from "@/components/ui/Button";
 import {
   bookingRequestSchema,
   MESSAGE_MAX_LENGTH,
@@ -100,9 +103,9 @@ export function BookingForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-4 rounded-2xl border border-cream-line bg-white p-8 text-center shadow-soft">
+      <Card className="flex flex-col items-center gap-4 p-8 text-center">
         <CheckCircle2 aria-hidden className="h-10 w-10 text-olive" />
-        <h3 className="font-display text-xl text-ink">{t("successTitle")}</h3>
+        <h3 className="t-h3 text-ink">{t("successTitle")}</h3>
         <p className="max-w-md text-ink-soft">{t("successBody")}</p>
         <button
           type="button"
@@ -110,26 +113,20 @@ export function BookingForm() {
             reset();
             setStatus("idle");
           }}
-          className="mt-2 rounded-full border border-cream-line px-5 py-2.5 text-sm font-medium text-ink hover:border-ink/30"
+          className={buttonStyles({ variant: "secondary", className: "mt-2" })}
         >
           {t("sendAnother")}
         </button>
-      </div>
+      </Card>
     );
   }
 
   if (status === "not-configured") {
     return (
-      <div
-        role="alert"
-        className="flex flex-col items-center gap-3 rounded-2xl border border-gold/40 bg-terracotta-light p-8 text-center"
-      >
-        <AlertTriangle aria-hidden className="h-8 w-8 text-terracotta-dark" />
-        <h3 className="font-display text-xl text-ink">
-          {t("notConfiguredTitle")}
-        </h3>
-        <p className="max-w-md text-ink-soft">{t("notConfiguredBody")}</p>
-      </div>
+      <Notice tone="warning" className="p-6">
+        <p className="font-display text-xl text-ink">{t("notConfiguredTitle")}</p>
+        <p className="mt-1 text-ink-soft">{t("notConfiguredBody")}</p>
+      </Notice>
     );
   }
 
@@ -137,16 +134,13 @@ export function BookingForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="relative rounded-2xl border border-cream-line bg-white p-6 shadow-soft sm:p-8"
+      className="relative rounded-card border border-cream-line bg-white p-6 shadow-soft sm:p-8"
     >
       {status === "error" ? (
-        <div
-          role="alert"
-          className="mb-6 rounded-xl border border-terracotta/30 bg-terracotta-light px-4 py-3 text-sm text-terracotta-dark"
-        >
+        <Notice tone="warning" className="mb-6">
           <p className="font-medium">{t("errorTitle")}</p>
           <p className="mt-0.5">{t("errorBody")}</p>
-        </div>
+        </Notice>
       ) : null}
 
       {/* Honeypot — left blank by real visitors, invisible but not display:none */}
@@ -252,7 +246,11 @@ export function BookingForm() {
       <button
         type="submit"
         disabled={isSubmitting || status === "submitting"}
-        className="mt-7 flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-terracotta px-6 py-3.5 text-base font-medium text-white shadow-soft transition-colors hover:bg-terracotta-dark disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className={buttonStyles({
+          variant: "primary",
+          size: "lg",
+          className: "mt-7 w-full sm:w-auto",
+        })}
       >
         {status === "submitting" ? (
           <>
@@ -269,7 +267,8 @@ export function BookingForm() {
 
 function inputClass(hasError: boolean) {
   return cn(
-    "min-h-12 w-full rounded-xl border bg-cream/40 px-4 py-2.5 text-ink placeholder:text-ink-faint focus-visible:bg-white",
+    // 16px on purpose: smaller text makes iOS Safari zoom the page on focus.
+    "min-h-12 w-full rounded-xl border bg-cream/40 px-4 py-2.5 text-[16px] text-ink placeholder:text-ink-faint focus-visible:bg-white",
     hasError
       ? "border-terracotta focus-visible:outline-terracotta"
       : "border-cream-line focus-visible:outline-terracotta"

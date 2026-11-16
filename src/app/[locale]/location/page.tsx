@@ -4,9 +4,12 @@ import { resolveLocale } from "@/i18n/routing";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { buttonStyles } from "@/components/ui/Button";
 import { LocationMap } from "@/components/location/LocationMap";
 import { NearbyPlaces } from "@/components/location/NearbyPlaces";
-import { FinalCta } from "@/components/home/FinalCta";
+import { BookingCta } from "@/components/home/BookingCta";
 import { siteConfig } from "@/config/site";
 import { getGoogleMapsDirectionsUrl } from "@/lib/maps";
 import { MapPin, Navigation } from "lucide-react";
@@ -32,27 +35,28 @@ export default async function LocationPage({
   const locale = resolveLocale(rawLocale);
   setRequestLocale(locale);
   const t = await getTranslations("location");
+  const tNav = await getTranslations("nav");
 
   return (
     <>
-      <PageHero title={t("title")} body={t("intro")} />
+      <PageHero eyebrow={tNav("location")} title={t("title")} body={t("intro")} />
 
-      <Section background="cream" className="pt-10 sm:pt-12">
-        <Container className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-12">
+      <Section background="cream" className="!pb-0 !pt-12 sm:!pt-14 lg:!pt-16">
+        <Container className="relative">
           <LocationMap
             title={t("mapTitle")}
-            className="h-[280px] sm:h-[340px] lg:aspect-auto lg:h-[380px]"
+            className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]"
           />
-          <div className="flex flex-col gap-4 rounded-2xl border border-cream-line bg-white p-6 shadow-soft">
+
+          {/* Address card: overlaps the map's corner on desktop, sits below it on phones. */}
+          <Card className="mt-4 flex flex-col gap-4 lg:absolute lg:bottom-8 lg:left-20 lg:mt-0 lg:max-w-sm">
             <div className="flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-terracotta-light text-terracotta">
-                <MapPin aria-hidden className="h-5 w-5" />
-              </span>
+              <MapPin aria-hidden className="mt-1 h-5 w-5 shrink-0 text-terracotta-dark" />
               <a
                 href={getGoogleMapsDirectionsUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-display text-lg text-ink underline decoration-cream-line decoration-2 underline-offset-4 transition-colors hover:text-terracotta hover:decoration-terracotta"
+                className="font-display text-xl text-ink underline decoration-cream-line decoration-2 underline-offset-4 transition-colors hover:text-terracotta-dark hover:decoration-terracotta"
               >
                 {siteConfig.location.streetAddress
                   ? `${siteConfig.location.streetAddress}, `
@@ -68,28 +72,25 @@ export default async function LocationPage({
               href={getGoogleMapsDirectionsUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-12 shrink-0 items-center gap-2 self-start rounded-full bg-terracotta px-5 text-sm font-medium text-white shadow-soft transition-colors hover:bg-terracotta-dark"
+              className={buttonStyles({ variant: "primary", className: "self-start" })}
             >
               <Navigation aria-hidden className="h-4 w-4" />
               {t("getDirections")}
             </a>
-          </div>
+          </Card>
         </Container>
       </Section>
 
-      <Section background="deep">
+      <Section background="cream">
         <Container>
-          <h2 className="font-display text-2xl text-ink sm:text-3xl">
-            {t("nearbyTitle")}
-          </h2>
-          <p className="mt-2 max-w-2xl text-ink-soft">{t("nearbyIntro")}</p>
-          <div className="mt-8">
+          <SectionHeading title={t("nearbyTitle")} body={t("nearbyIntro")} />
+          <div className="mt-12">
             <NearbyPlaces />
           </div>
         </Container>
       </Section>
 
-      <FinalCta />
+      <BookingCta />
     </>
   );
 }

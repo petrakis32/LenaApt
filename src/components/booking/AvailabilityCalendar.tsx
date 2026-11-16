@@ -53,9 +53,9 @@ function MonthGrid({
 
   return (
     <div>
-      <h4 className="mb-3 text-center font-display text-lg capitalize text-ink">
+      <h3 className="mb-3 text-center font-display text-xl capitalize text-ink">
         {monthLabel}
-      </h4>
+      </h3>
       <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium uppercase tracking-wide text-ink-faint">
         {weekdays.map((w) => (
           <div key={w} className="py-1">
@@ -145,13 +145,13 @@ export function AvailabilityCalendar() {
     "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream-line text-ink hover:border-ink/30 disabled:cursor-not-allowed disabled:opacity-40";
 
   return (
-    <div className="rounded-2xl border border-cream-line bg-white shadow-soft">
+    <div className="rounded-card border border-cream-line bg-white shadow-soft">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls="availability-panel"
-        className="flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left sm:px-6"
+        className="flex w-full items-center justify-between gap-4 rounded-card px-5 py-4 text-left sm:px-6"
       >
         <span className="flex items-center gap-3">
           <CalendarDays aria-hidden className="h-5 w-5 shrink-0 text-terracotta" />

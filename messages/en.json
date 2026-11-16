@@ -39,19 +39,36 @@
   "hero": {
     "eyebrow": "Rethymno, Crete",
     "title": "Lena Apt",
-    "subtitle": "A bright, comfortable two-bedroom apartment in the heart of Crete — your calm home base for a memorable stay in Rethymno.",
+    "subtitle": "Your home away from home in Rethymno, Crete.",
     "primaryCta": "Request a Booking",
     "secondaryCta": "Explore the Apartment",
     "scrollHint": "Discover more"
   },
   "home": {
-    "introEyebrow": "Welcome",
+    "facts": {
+      "bedrooms": "{count, plural, one {# Bedroom} other {# Bedrooms}}",
+      "beds": "{count, plural, one {# Bed} other {# Beds}}",
+      "bathrooms": "{count, plural, one {# Bathroom} other {# Bathrooms}}",
+      "guests": "Up to {count} guests",
+      "wifi": "Wi-Fi",
+      "ac": "Air conditioning"
+    },
+    "introEyebrow": "Relax • Unwind • Enjoy",
     "introTitle": "A warm, well-equipped home in Rethymno",
+    "introLead": "Two comfortable bedrooms, a fully equipped kitchen and two balconies — a calm base for your stay in Crete.",
+    "introCta": "Discover the apartment",
     "introBody": "Lena Apt offers two comfortable bedrooms, a fully equipped kitchen and two balconies to relax on — thoughtfully arranged so you feel at home from the moment you arrive. Whether you're exploring Rethymno's old town, the surrounding beaches or the rest of Crete, Lena Apt is a calm, comfortable base to return to.",
     "quickFactsTitle": "At a glance",
     "overviewEyebrow": "The Apartment",
     "overviewTitle": "Space to relax, indoors and out",
     "overviewBody": "Two bedrooms sleep up to four guests comfortably, with a fully equipped kitchen, a bathroom and two private balconies — one large enough to dine on, one perfect for a quiet morning coffee.",
+    "spaces": {
+      "bedrooms": "Bedrooms",
+      "living": "Living & kitchen",
+      "balconies": "Balconies"
+    },
+    "atAGlance": "Nearby",
+    "overviewLead": "Take a look around — the bedrooms, the kitchen and both balconies.",
     "overviewCta": "See all apartment details",
     "amenitiesEyebrow": "Comfort",
     "amenitiesTitle": "Everything you need, ready when you arrive",
@@ -62,6 +79,7 @@
     "locationEyebrow": "Location",
     "locationTitle": "Rethymno, Crete",
     "locationBody": "Lena Apt is located in Rethymno, on the north coast of Crete — a city known for its Venetian old town, long sandy beach and relaxed island pace. Full directions and nearby highlights are on the location page.",
+    "locationLead": "In Rethymno, on the north coast of Crete. Directions and nearby highlights are on the location page.",
     "locationCta": "Discover the location",
     "ctaEyebrow": "Ready to visit?",
     "ctaTitle": "Request your stay at Lena Apt",
@@ -227,6 +245,20 @@
     },
     "channelsTitle": "Also listed on",
     "channelsNote": "Availability calendars for Airbnb and Booking.com will be connected here soon.",
+    "steps": {
+      "one": {
+        "title": "Send a request",
+        "body": "Pick your dates and fill in the form below."
+      },
+      "two": {
+        "title": "We confirm",
+        "body": "The owners confirm availability by email or phone."
+      },
+      "three": {
+        "title": "Enjoy your stay",
+        "body": "No platform fees and no middleman."
+      }
+    },
     "calendar": {
       "title": "Availability",
       "toggleHint": "Check which dates are free before you request",

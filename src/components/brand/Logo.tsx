@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
-  /** Use a lighter mark on a dark/photographic background (e.g. the hero). */
+  /** Use a white mark on a dark/photographic background (e.g. the hero). */
   inverted?: boolean;
 }
 
@@ -17,8 +17,9 @@ export function Logo({ className, inverted }: LogoProps) {
   return (
     <Link
       href="/"
+      aria-label={siteConfig.name}
       className={cn(
-        "inline-flex items-center gap-2 font-display text-xl tracking-tight",
+        "inline-flex items-center gap-2 font-display text-2xl tracking-tight transition-colors",
         inverted ? "text-white" : "text-ink",
         className
       )}
@@ -28,27 +29,15 @@ export function Logo({ className, inverted }: LogoProps) {
           src={siteConfig.logoSrc}
           alt={siteConfig.name}
           width={140}
-          height={40}
+          height={107}
           priority
-          className="h-9 w-auto"
+          // The logo is dark blue + gold; on photos it is flattened to white.
+          className={cn("h-11 w-auto transition-[filter]", inverted && "brightness-0 invert")}
         />
       ) : (
-        <>
-          <span
-            aria-hidden
-            className={cn(
-              "flex h-9 w-9 items-center justify-center rounded-full text-base",
-              inverted
-                ? "bg-white/15 text-white ring-1 ring-white/40"
-                : "bg-terracotta text-white"
-            )}
-          >
-            L
-          </span>
-          <span className="leading-none">
-            Lena <span className="text-terracotta">Apt</span>
-          </span>
-        </>
+        <span className="leading-none">
+          Lena <span className={inverted ? "text-white" : "text-terracotta-dark"}>Apt</span>
+        </span>
       )}
     </Link>
   );

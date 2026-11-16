@@ -3,43 +3,42 @@ import { cn } from "@/lib/utils";
 interface SectionHeadingProps {
   title: string;
   body?: string;
+  /** Small uppercase label above the title. */
+  eyebrow?: string;
   align?: "left" | "center";
   className?: string;
   tone?: "default" | "inverted";
+  /** Heading level to render; visual size is the same. */
+  as?: "h1" | "h2" | "h3";
 }
 
+/** eyebrow → title → lead, in one consistent stack. */
 export function SectionHeading({
   title,
   body,
+  eyebrow,
   align = "left",
   className,
   tone = "default",
+  as: Tag = "h2",
 }: SectionHeadingProps) {
+  const inverted = tone === "inverted";
   return (
     <div
       className={cn(
-        "max-w-2xl",
+        "max-w-xl",
         align === "center" && "mx-auto text-center",
         className
       )}
     >
-      <h2
-        className={cn(
-          "balance font-display text-4xl leading-[1.1] tracking-[-0.01em] sm:text-[2.6rem]",
-          tone === "inverted" ? "text-white" : "text-ink"
-        )}
-      >
+      {eyebrow ? (
+        <p className={cn("t-eyebrow mb-4", inverted && "!text-gold")}>{eyebrow}</p>
+      ) : null}
+      <Tag className={cn("balance t-h2", inverted ? "text-white" : "text-ink")}>
         {title}
-      </h2>
+      </Tag>
       {body ? (
-        <p
-          className={cn(
-            "mt-4 text-base leading-relaxed sm:text-lg",
-            tone === "inverted" ? "text-cream/85" : "text-ink-soft"
-          )}
-        >
-          {body}
-        </p>
+        <p className={cn("t-lead mt-5", inverted && "!text-cream/85")}>{body}</p>
       ) : null}
     </div>
   );

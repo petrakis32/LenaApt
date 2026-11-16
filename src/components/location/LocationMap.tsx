@@ -26,7 +26,7 @@ export function LocationMap({ title, className, spread = 0.01 }: LocationMapProp
   return (
     <div
       className={cn(
-        "relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-cream-line shadow-soft sm:aspect-video",
+        "relative aspect-[4/3] w-full overflow-hidden rounded-card border border-cream-line shadow-soft sm:aspect-video",
         className
       )}
     >

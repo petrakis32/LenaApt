@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { EB_Garamond, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -7,11 +7,14 @@ import { routing, resolveLocale } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { MobileBookBar } from "@/components/layout/MobileBookBar";
 import "../globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin", "latin-ext"],
+// Display serif. Unlike Playfair Display, EB Garamond ships Greek glyphs, so
+// Greek headings use the brand font instead of a system fallback.
+const garamond = EB_Garamond({
+  variable: "--font-garamond",
+  subsets: ["latin", "latin-ext", "greek", "greek-ext"],
   display: "swap",
 });
 
@@ -72,7 +75,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
-      className={`${playfair.variable} ${inter.variable}`}
+      className={`${garamond.variable} ${inter.variable}`}
     >
       <body className="flex min-h-screen flex-col antialiased">
         <NextIntlClientProvider locale={locale}>
@@ -81,6 +84,7 @@ export default async function LocaleLayout({
             {children}
           </main>
           <Footer />
+          <MobileBookBar />
         </NextIntlClientProvider>
       </body>
     </html>
