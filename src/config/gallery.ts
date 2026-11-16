@@ -53,6 +53,7 @@ export const homePhotos = {
     bedrooms: `${GALLERY_BASE}/bedroom-1/img_20210714_153436.jpg`,
     living: `${GALLERY_BASE}/hall-kitchen/img_20210714_165422.jpg`,
     balconies: `${GALLERY_BASE}/balcony-2/img_20210714_161201.jpg`,
+    bathroom: `${GALLERY_BASE}/bathroom/img_20210714_160356.jpg`,
   },
   cta: `${GALLERY_BASE}/other/slide1.jpg`, // decanter + raki glasses on the dining table
 } as const;

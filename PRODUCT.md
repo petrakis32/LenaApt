@@ -10,4 +10,6 @@
 - Never invent facts: contact details are still "coming soon" (`src/config/site.ts`), nearby places are only the real entries in `src/config/location.ts`.
 - Booking behavior (zod schema, honeypot, rate limit, email, calendar⇄form sync, "dates already booked" check) must keep working through any redesign.
 
-**Known open items:** owner phone/WhatsApp/email; more nearby places (beaches, restaurants, cafés, supermarkets); production env vars on the host (iCal URLs, SMTP).
+- Guest ratings/reviews are never invented: only real values from the owner go into `src/config/reviews.ts` (platform scores, counts, public listing URLs, verbatim quotes). Empty values render as "coming soon" placeholders.
+
+**Known open items:** owner phone/WhatsApp/email; more nearby places (beaches, restaurants, cafés, supermarkets); in `config/reviews.ts`: Airbnb rating, review counts and public listing URLs for all three platforms, and review quotes (Google 4.8/5 and Booking.com 10/10 are already filled, supplied by the owner); production env vars on the host (iCal URLs, SMTP).

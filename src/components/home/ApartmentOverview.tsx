@@ -1,72 +1,96 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
 import { homePhotos } from "@/config/gallery";
-import { Photo } from "@/components/media/Photo";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { cn } from "@/lib/utils";
+import { SpacesShowcase, type Space } from "./SpacesShowcase";
 
 /**
- * "Our apartment": short text + gallery button on the left, three photos
- * butted together on the right that fill the section from top to bottom
- * and run to the screen edge (like the intro split above).
+ * "Our apartment": a title with soft lines, then only the gallery button on the left, four photos
+ * butted together on the right that fill the section from top to bottom and
+ * run to the screen edge. On desktop, hovering a photo opens a text panel
+ * beside it (see SpacesShowcase). Room text reuses the apartment page copy.
  */
 export async function ApartmentOverview() {
   const t = await getTranslations("home");
+  const tApt = await getTranslations("apartment");
 
-  const spaces = [
-    { key: "bedrooms", src: homePhotos.spaces.bedrooms, position: "50% 60%" },
-    { key: "living", src: homePhotos.spaces.living, position: "50% 50%" },
-    { key: "balconies", src: homePhotos.spaces.balconies, position: "50% 40%" },
-  ] as const;
+  const href = "/apartment#rooms";
+  const spaces: Space[] = [
+    {
+      key: "bedrooms",
+      href,
+      src: homePhotos.spaces.bedrooms,
+      position: "50% 60%",
+      title: t("spaces.bedrooms"),
+      paragraphs: [
+        tApt("rooms.bedroom-1.description"),
+        tApt("rooms.bedroom-2.description"),
+      ],
+    },
+    {
+      key: "living",
+      href,
+      src: homePhotos.spaces.living,
+      position: "50% 50%",
+      title: t("spaces.living"),
+      paragraphs: [tApt("rooms.living.description")],
+    },
+    {
+      key: "balconies",
+      href,
+      src: homePhotos.spaces.balconies,
+      position: "50% 40%",
+      title: t("spaces.balconies"),
+      paragraphs: [
+        tApt("rooms.balcony-large.description"),
+        tApt("rooms.balcony-small.description"),
+      ],
+    },
+    {
+      key: "bathroom",
+      href,
+      src: homePhotos.spaces.bathroom,
+      position: "50% 50%",
+      title: t("spaces.bathroom"),
+      paragraphs: [tApt("rooms.bathroom.description")],
+    },
+  ];
+  // Balconies and bathroom share the last column, one above the other.
+  const [bedrooms, living, balconies, bathroom] = spaces;
+  const columns: Space[][] = [[bedrooms], [living], [balconies, bathroom]];
 
   return (
-    <section className="grid bg-cream lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2.2fr)]">
-      {/* Left padding lines the text up with the page container on wide screens. */}
-      <div className="flex items-center px-5 py-14 sm:px-8 lg:py-16 lg:pl-[max(3rem,calc((100vw-96rem)/2+3rem))] lg:pr-10">
-        <Reveal>
-          <h2 className="t-h2 balance text-ink">{t("overviewTitle")}</h2>
-          <p className="t-lead mt-4 max-w-sm">{t("overviewLead")}</p>
-          <Button href="/gallery" variant="secondary" className="mt-7">
-            {t("galleryCta")}
-            <ArrowRight aria-hidden className="h-4 w-4" />
-          </Button>
+    <>
+      {/* Section title with soft hairlines fading out to the sides; the breathing room above
+          separates it from the intro block, the room below from the photo row. */}
+      <div className="bg-cream px-5 pb-6 pt-5 sm:px-8 sm:pt-6 lg:pb-7 lg:pt-6">
+        <Reveal className="mx-auto flex max-w-5xl items-center gap-5 sm:gap-8">
+          <span
+            aria-hidden
+            className="h-px flex-1 bg-gradient-to-r from-transparent to-ink/30"
+          />
+          <h2 className="t-h2 text-center text-ink">{t("overviewTitle")}</h2>
+          <span
+            aria-hidden
+            className="h-px flex-1 bg-gradient-to-l from-transparent to-ink/30"
+          />
         </Reveal>
       </div>
 
-      <div className="grid grid-cols-2 sm:min-h-[26rem] sm:grid-cols-3 lg:min-h-[30rem]">
-        {spaces.map(({ key, src, position }, i) => (
-          <Reveal
-            key={key}
-            delay={i * 90}
-            className={cn("sm:h-full", i === 0 && "col-span-2 sm:col-span-1")}
-          >
-            <Link
-              href="/apartment#rooms"
-              className={cn(
-                "group relative block overflow-hidden sm:h-full",
-                i === 0 ? "aspect-[16/10] sm:aspect-auto" : "aspect-[4/5] sm:aspect-auto"
-              )}
-            >
-              <Photo
-                src={src}
-                alt=""
-                position={position}
-                sizes="(min-width: 1024px) 37vw, (min-width: 640px) 33vw, 100vw"
-                className="transition-transform duration-700 ease-[var(--ease-out-soft)] group-hover:scale-[1.03]"
-              />
-              <div
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/60 to-transparent"
-              />
-              <span className="absolute bottom-4 left-4 text-sm font-medium text-white">
-                {t(`spaces.${key}`)}
-              </span>
-            </Link>
+      <section className="grid bg-cream lg:grid-cols-[minmax(0,0.5fr)_minmax(0,2.5fr)]">
+        {/* Narrow column: just wide enough for the button, centered in it. */}
+        <div className="flex items-center justify-center px-5 py-14 text-center sm:px-8 lg:px-4 lg:py-16">
+          <Reveal>
+            <Button href="/gallery" variant="secondary">
+              {t("galleryCta")}
+              <ArrowRight aria-hidden className="h-4 w-4" />
+            </Button>
           </Reveal>
-        ))}
-      </div>
-    </section>
+        </div>
+
+        <SpacesShowcase columns={columns} />
+      </section>
+    </>
   );
 }

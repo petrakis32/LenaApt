@@ -33,8 +33,11 @@ export default async function HomePage({
   return (
     <>
       <LodgingJsonLd />
-      <Hero />
-      <FactsBar />
+      {/* On desktop, hero + facts bar together fill exactly the first screen. */}
+      <div className="flex flex-col lg:min-h-svh">
+        <Hero />
+        <FactsBar />
+      </div>
       <IntroSection />
       <ApartmentOverview />
       <LocationTeaser />

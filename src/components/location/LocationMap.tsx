@@ -1,27 +1,23 @@
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
+import { OsmEmbed } from "./OsmEmbed";
 
 interface LocationMapProps {
   title: string;
   className?: string;
-  /** Half-width/height of the map bounding box, in degrees. */
+  /** Half-height of the visible area, in degrees of latitude. */
   spread?: number;
 }
 
 /**
  * Embeds an OpenStreetMap view (no API key required) centred on the
  * owner's exact coordinates — decoded from their Google Plus Code,
- * see src/config/site.ts.
+ * see src/config/site.ts. `OsmEmbed` sizes the visible area to the frame.
  */
-export function LocationMap({ title, className, spread = 0.01 }: LocationMapProps) {
+export function LocationMap({ title, className, spread = 0.014 }: LocationMapProps) {
   const { lat, lng } =
     siteConfig.location.exactCoordinates ??
     siteConfig.location.approximateCoordinates;
-
-  const bbox = [lng - spread, lat - spread, lng + spread, lat + spread].join(
-    "%2C"
-  );
-  const src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
 
   return (
     <div
@@ -30,13 +26,7 @@ export function LocationMap({ title, className, spread = 0.01 }: LocationMapProp
         className
       )}
     >
-      <iframe
-        title={title}
-        src={src}
-        className="h-full w-full border-0"
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+      <OsmEmbed title={title} lat={lat} lng={lng} spread={spread} />
     </div>
   );
 }

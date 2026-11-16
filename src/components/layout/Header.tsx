@@ -37,7 +37,8 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300",
         overPhoto
-          ? "border-b border-transparent bg-gradient-to-b from-ink/50 to-transparent"
+          ? // No border here: a transparent border would repeat the gradient's dark first row as a line.
+            "bg-gradient-to-b from-ink/50 to-transparent"
           : "border-b border-cream-line/80 bg-cream/95 backdrop-blur supports-[backdrop-filter]:bg-cream/85"
       )}
     >
